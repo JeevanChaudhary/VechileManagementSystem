@@ -8,6 +8,7 @@ public interface VehicleService {
 	
 	public ServiceList getServiceListByName(String serviceName);
 	public List<ServiceList> getAllService();
+	public ServiceList getById(int id);
 	
 }
  

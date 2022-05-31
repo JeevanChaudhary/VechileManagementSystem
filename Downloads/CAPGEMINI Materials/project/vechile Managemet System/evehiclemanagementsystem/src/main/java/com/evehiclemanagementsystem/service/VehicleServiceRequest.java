@@ -1,14 +1,15 @@
 package com.evehiclemanagementsystem.service;
 
-import java.util.Set;
+import javax.management.ServiceNotFoundException;
 
-import com.evehiclemanagementsystem.entity.ServiceList;
 import com.evehiclemanagementsystem.entity.ServiceRequest;
 
 public interface VehicleServiceRequest{
 	
-	ServiceRequest addServiceRequest(ServiceRequest serviceRequest);
-	ServiceRequest addOrderRequest(int customerId,Set<ServiceList> serviceList );
+	public ServiceRequest addServiceRequest(int serviceId,double totalAmount,String status) throws ServiceNotFoundException;
+	
+//	ServiceRequest addServiceRequest(ServiceRequest serviceRequest);
+	
 
 	
 }

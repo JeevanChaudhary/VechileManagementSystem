@@ -3,6 +3,8 @@ package com.evehiclemanagementsystem.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,9 @@ public class VehicleServiceController{
 	}
 	
 	@GetMapping("/serviceList/serviceName/{serviceName}")
-	public ServiceList getServiceByName(@PathVariable("serviceName") String serviceName) {
-		return vehicleService.getServiceListByName(serviceName);
+	public ResponseEntity <ServiceList> getServiceByName(@PathVariable("serviceName") String serviceName) {
+		ServiceList serviceList= vehicleService.getServiceListByName(serviceName);
+		ResponseEntity<ServiceList> responseEntity=new ResponseEntity<>(serviceList,HttpStatus.OK);
+		return responseEntity;
 	}
 }

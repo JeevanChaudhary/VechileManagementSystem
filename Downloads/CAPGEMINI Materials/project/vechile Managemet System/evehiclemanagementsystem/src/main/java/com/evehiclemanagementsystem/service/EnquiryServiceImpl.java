@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.evehiclemanagementsystem.entity.Enquiry;
+import com.evehiclemanagementsystem.exception.EnquiryNotFoundException;
 import com.evehiclemanagementsystem.repository.EnquiryRepository;
 
 
@@ -22,9 +23,16 @@ public class EnquiryServiceImpl implements EnquiryService {
 	}
 	
 	@Override
-	public Enquiry getById(int enquiryId) {
-		Optional<Enquiry> enquiryById=enquiryRepository.findById(enquiryId);
-		Enquiry enquiry=enquiryById.get();
+	public Enquiry getById(int enquiryId) throws EnquiryNotFoundException {
+		
+		Optional<Enquiry> optionalEnquiry = enquiryRepository.findById(enquiryId);	
+		
+		if(optionalEnquiry.isEmpty()) {
+			
+			throw new EnquiryNotFoundException("Enquiry Not found with id: "+enquiryId);
+		}
+		
+		Enquiry enquiry = optionalEnquiry.get();
 		return enquiry;
 	}
 

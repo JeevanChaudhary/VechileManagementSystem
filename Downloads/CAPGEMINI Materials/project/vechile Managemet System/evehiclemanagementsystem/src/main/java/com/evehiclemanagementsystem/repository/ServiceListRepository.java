@@ -9,4 +9,5 @@ import com.evehiclemanagementsystem.entity.ServiceList;
 @Repository
 public interface ServiceListRepository extends JpaRepository<ServiceList, Integer>{
 	ServiceList findByServiceName(String serviceName);
+	
 }
