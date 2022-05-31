@@ -25,4 +25,12 @@ public class GlobalExceptionHandler {
 		ResponseEntity<String> responseEntity = new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
 		return responseEntity;
 	}
+	
+	@ExceptionHandler(value = ServiceRequestNotFoundException.class)
+	public ResponseEntity<String> handleServiceRequestNotFoundException(Exception e) {
+		ResponseEntity<String> responseEntity = new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+		return responseEntity;
+	}
+	
+	
 }
