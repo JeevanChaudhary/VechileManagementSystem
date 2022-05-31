@@ -15,11 +15,7 @@ import com.evehiclemanagementsystem.service.VehicleService;
 
 @RestController
 public class VehicleServiceController{
-	@RequestMapping("/hello")
-	public String sayHello() {
-		String msg="hello";
-		return msg;
-	}
+	
 	
 	@Autowired
 	private VehicleService vehicleService;
